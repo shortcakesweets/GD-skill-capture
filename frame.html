@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Skill</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: auto;
+      margin: 0;
+      font-family: Arial, sans-serif;
+	  background-color: #bbbbbb;
+    }
+
+    h1 {
+      font-size: 24px;
+      text-align: center;
+    }
+	
+	.yellow-text {
+      color: yellow;
+    }
+
+    p {
+      font-size: 16px;
+      text-align: center;
+    }
+	
+	.table-container {
+      display: flex;
+    }
+
+    .table-container table {
+      border-collapse: collapse;
+      margin: 10px;
+    }
+	
+	.table-container caption {
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+	
+	.table-container .table-number {
+      font-size: 16px;
+      font-weight: normal;
+      text-align: center;
+      margin-bottom: 5px;
+    }
+
+    .table-container td {
+      padding: 8px;
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <h1>GITADORA FUZZ-UP<br>DrumMania Skill by <span class="yellow-text">Shortcake</span></h1>
+  <p><span id="time"></span></p>
+  
+  <div class="table-container">
+    <table id="skillHot">
+      <caption>HOT</caption>
+	  <tr>
+        <td class="table-number" colspan="4">0.00</td>
+      </tr>
+      <tbody>
+	    <!-- Rows for Table 1 -->
+      </tbody>
+    </table>
+
+    <table id="skillOth">
+      <caption>OTHER</caption>
+	  <tr>
+        <td class="table-number" colspan="4">0.00</td>
+      </tr>
+      <tbody>
+        <!-- Rows for Table 2 -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    // Set the current time to the 'time' element
+    const timeElement = document.getElementById("time");
+    const currentTime = new Date().toLocaleTimeString();
+    timeElement.textContent = currentTime;
+	
+	const tbodyHot = (document.getElementById("skillHot").getElementsByTagName("tbody"))[0];
+	const tbodyOth = (document.getElementById("skillOth").getElementsByTagName("tbody"))[0];
+    for (let i = 1; i <= 25; i++) {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${i}</td>
+        <td><img src="jacket.jpg" alt="song_name"></td>
+        <td>String</td>
+        <td>String</td>
+      `;
+      tbodyHot.appendChild(row);
+    }
+	for (let i = 1; i <= 25; i++) {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${i}</td>
+        <td><img src="jacket.jpg" alt="song_name"></td>
+        <td>String</td>
+        <td>String</td>
+      `;
+      tbodyOth.appendChild(row);
+    }
+  </script>
+</body>
+</html>
