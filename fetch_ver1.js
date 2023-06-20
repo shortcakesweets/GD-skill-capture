@@ -37,6 +37,7 @@ function parseDORA(page){
 				
 				
 				
+				
 				console.log("jacket:", jacket);
 				console.log("point:", point);
 				console.log("percent:", percent);
