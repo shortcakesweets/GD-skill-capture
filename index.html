@@ -103,43 +103,43 @@
 	let data = [];
 	if(document.location.hash.length != 0){
 		hash = document.location.hash.substring(1);
-		data = JSON.parse(hash);
+		data = JSON.parse(decodeURIComponent(hash));
 		console.log(data);
+		if(data[2] == "GITA"){
+			imgsrc_Hot += jacket_base_GHot;
+			imgsrc_Oth += jacket_base_GOth;
+		}
+		else(data[2] == "DORA"){
+			imgsrc_Hot += jacket_base_DHot;
+			imgsrc_Oth += jacket_base_DOth;
+		}
+		setTable();
 	}
-	if(data[2] == "GITA"){
-		imgsrc_Hot += jacket_base_GHot;
-		imgsrc_Oth += jacket_base_GOth;
-	}
-	else{
-		imgsrc_Hot += jacket_base_DHot;
-		imgsrc_Oth += jacket_base_DOth;
-	}
-	console.log(imgsrc_Hot);
-	console.log(imgsrc_Oth);
 	
-	const tbodyHot = document.getElementById("skillHot");
-	const tbodyOth = document.getElementById("skillOth");
-    for (let i = 0; i < 25; i++) {
-      const row = document.createElement("tr");
-      row.innerHTML = `
-        <td>${i + 1}</td>
-        <td><img src=${imgsrc_Hot + data[0][i].url_compressed} alt=${data[0][i].title}></td>
-        <td>${data[0][i].skill}<br>${data[0][i].percent}</td>
-        <td>String</td>
-      `;
-      tbodyHot.appendChild(row);
-    }
-	for (let i = 0; i < 25; i++) {
-      const row = document.createElement("tr");
-      row.innerHTML = `
-        <td>${i + 1}</td>
-        <td><img src=${imgsrc_Oth + data[0][i].url_compressed} alt=${data[0][i].title}></td>
-        <td>${data[0][i].skill}<br>${data[0][i].percent}</td>
-        <td>String</td>
-      `;
-      tbodyOth.appendChild(row);
-    }
-	
+	function setTable(){
+		const tbodyHot = document.getElementById("skillHot");
+		const tbodyOth = document.getElementById("skillOth");
+		for (let i = 0; i < 25; i++) {
+			const row = document.createElement("tr");
+			row.innerHTML = `
+				<td>${i + 1}</td>
+				<td><img src=${imgsrc_Hot + data[0][i].url_compressed} alt=${data[0][i].title}></td>
+				<td>${data[0][i].skill}<br>${data[0][i].percent}</td>
+				<td>String</td>
+			`;
+			tbodyHot.appendChild(row);
+		}
+		for (let i = 0; i < 25; i++) {
+			const row = document.createElement("tr");
+			row.innerHTML = `
+				<td>${i + 1}</td>
+				<td><img src=${imgsrc_Oth + data[0][i].url_compressed} alt=${data[0][i].title}></td>
+				<td>${data[0][i].skill}<br>${data[0][i].percent}</td>
+				<td>String</td>
+			`;
+			tbodyOth.appendChild(row);
+		}
+	};
   </script>
 </body>
 </html>
