@@ -62,22 +62,22 @@
   <p><span id="time"></span></p>
   
   <div class="table-container">
-    <table id="skillHot">
+    <table id="skillTableHot">
       <caption>HOT</caption>
 	  <tr>
-        <td class="table-number" colspan="4">0.00</td>
+        <td class="table-number" colspan="4" id="skillValueHot">0.00</td>
       </tr>
-      <tbody>
+      <tbody id="skillHot">
 	    <!-- Rows for Table 1 -->
       </tbody>
     </table>
 
-    <table id="skillOth">
+    <table id="skillTableOth">
       <caption>OTHER</caption>
 	  <tr>
-        <td class="table-number" colspan="4">0.00</td>
+        <td class="table-number" colspan="4" id="skillValueOth">0.00</td>
       </tr>
-      <tbody>
+      <tbody id="skillOth">
         <!-- Rows for Table 2 -->
       </tbody>
     </table>
@@ -89,8 +89,8 @@
     const currentTime = new Date().toLocaleTimeString();
     timeElement.textContent = currentTime;
 	
-	const tbodyHot = (document.getElementById("skillHot").getElementsByTagName("tbody"))[0];
-	const tbodyOth = (document.getElementById("skillOth").getElementsByTagName("tbody"))[0];
+	const tbodyHot = document.getElementById("skillHot");
+	const tbodyOth = document.getElementById("skillOth");
     for (let i = 1; i <= 25; i++) {
       const row = document.createElement("tr");
       row.innerHTML = `
