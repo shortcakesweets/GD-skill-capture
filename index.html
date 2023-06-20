@@ -64,53 +64,82 @@
   <div class="table-container">
     <table id="skillTableHot">
       <caption>HOT</caption>
+      <tbody id="skillHot">
 	  <tr>
         <td class="table-number" colspan="4" id="skillValueHot">0.00</td>
       </tr>
-      <tbody id="skillHot">
 	    <!-- Rows for Table 1 -->
       </tbody>
     </table>
 
     <table id="skillTableOth">
       <caption>OTHER</caption>
+      <tbody id="skillOth">
 	  <tr>
         <td class="table-number" colspan="4" id="skillValueOth">0.00</td>
       </tr>
-      <tbody id="skillOth">
         <!-- Rows for Table 2 -->
       </tbody>
     </table>
   </div>
 
   <script>
+	// const
+	const jacket_base = "https://p.eagate.573.jp/game/gfdm/gitadora_fuzzup/p/playdata/img.html?imgkey=music_skill_gitadora-fuzzup-";
+	const jacket_base_GHot = "gf_1&imgid=";
+	const jacket_base_GOth = "gf_0&imgid=";
+	const jacket_base_DOth = "dm_0&imgid=";
+	const jacket_base_DHot = "dm_1&imgid=";
+  
     // Set the current time to the 'time' element
     const timeElement = document.getElementById("time");
     const currentTime = new Date().toLocaleTimeString();
     timeElement.textContent = currentTime;
 	
+	// parse data
+	let imgsrc_Hot = jacket_base;
+	let imgsrc_Oth = jacket_base;
+	let hash = '';
+	let data = [];
+	if(document.location.hash.length != 0){
+		hash = document.location.hash.substring(1);
+		data = JSON.parse(hash);
+		console.log(data);
+	}
+	if(data[2] == "GITA"){
+		imgsrc_Hot += jacket_base_GHot;
+		imgsrc_Oth += jacket_base_GOth;
+	}
+	else{
+		imgsrc_Hot += jacket_base_DHot;
+		imgsrc_Oth += jacket_base_DOth;
+	}
+	console.log(imgsrc_Hot);
+	console.log(imgsrc_Oth);
+	
 	const tbodyHot = document.getElementById("skillHot");
 	const tbodyOth = document.getElementById("skillOth");
-    for (let i = 1; i <= 25; i++) {
+    for (let i = 0; i < 25; i++) {
       const row = document.createElement("tr");
       row.innerHTML = `
-        <td>${i}</td>
-        <td><img src="jacket.jpg" alt="song_name"></td>
-        <td>String</td>
+        <td>${i + 1}</td>
+        <td><img src=${imgsrc_Hot + data[0][i].url_compressed} alt=${data[0][i].title}></td>
+        <td>${data[0][i].skill}<br>${data[0][i].percent}</td>
         <td>String</td>
       `;
       tbodyHot.appendChild(row);
     }
-	for (let i = 1; i <= 25; i++) {
+	for (let i = 0; i < 25; i++) {
       const row = document.createElement("tr");
       row.innerHTML = `
-        <td>${i}</td>
-        <td><img src="jacket.jpg" alt="song_name"></td>
-        <td>String</td>
+        <td>${i + 1}</td>
+        <td><img src=${imgsrc_Oth + data[0][i].url_compressed} alt=${data[0][i].title}></td>
+        <td>${data[0][i].skill}<br>${data[0][i].percent}</td>
         <td>String</td>
       `;
       tbodyOth.appendChild(row);
     }
+	
   </script>
 </body>
 </html>

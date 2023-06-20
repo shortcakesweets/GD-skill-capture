@@ -10,7 +10,6 @@ const fetchHTML = async (url) => {
     const parser = new DOMParser();
 	const doc = parser.parseFromString(html, 'text/html');
     const element = doc.querySelectorAll("#contents > div.maincont > div:nth-child(4) > table > tbody > tr");
-    //console.log(element);
 
     const data = [];
     for(const tr of element){
@@ -31,12 +30,21 @@ const getDataDORA = async () => {
     const urls = [urlDhot, urlDoth];
     const results = await Promise.all(urls.map(url => fetchHTML(url)));
     results.push("DORA");
-    // const [dataHot, dataOth] = results;
-
     const hash = JSON.stringify(results);
     console.log(hash);
-
     const newPage = window.open(urlFrame + '#' + encodeURIComponent(hash));
 }
 
+const getDataGITA = async () => {
+    const urls = [urlGhot, urlGoth];
+    const results = await Promise.all(urls.map(url => fetchHTML(url)));
+    results.push("GITA");
+    const hash = JSON.stringify(results);
+    console.log(hash);
+    const newPage = window.open(urlFrame + '#' + encodeURIComponent(hash));
+}
+
+/* Usage
 getDataDORA();
+ - opens new window with hash(skill data) param
+*/
