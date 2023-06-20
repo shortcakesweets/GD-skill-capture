@@ -2,6 +2,7 @@ var urlGhot = 'https://p.eagate.573.jp/game/gfdm/gitadora_fuzzup/p/playdata/skil
 var urlGoth = 'https://p.eagate.573.jp/game/gfdm/gitadora_fuzzup/p/playdata/skill.html?gtype=gf&stype=0'
 var urlDhot = 'https://p.eagate.573.jp/game/gfdm/gitadora_fuzzup/p/playdata/skill.html?gtype=dm&stype=1'
 var urlDoth = 'https://p.eagate.573.jp/game/gfdm/gitadora_fuzzup/p/playdata/skill.html?gtype=dm&stype=0'
+var urlFrame = 'https://shortcakesweets.github.io/GD-skill-capture/'
 
 function fetchData(target_url){
 	return new Promise((resolve, reject) => {
@@ -20,9 +21,8 @@ function fetchData(target_url){
 	});
 };
 
-function parseDORA(page){
-	//var pageHot = (page.getElementById("skillHot").getElementsByTagName("tbody"))[0];
-	//var pageOth = (page.getElementById("skillOth").getElementsByTagName("tbody"))[0];
+function parseDORA(){
+	var page = window.open(urlFrame);
 	
 	fetchData(urlDhot)
 		.then(value => {
@@ -34,9 +34,6 @@ function parseDORA(page){
 				var point = (row.getElementsByClassName("skill_cell"))[0];
 				var percent = (row.getElementsByClassName("achive_cell"))[0];
 				var level = (row.getElementsByClassName("diff_cell"))[0];
-				
-				
-				
 				
 				console.log("jacket:", jacket);
 				console.log("point:", point);
@@ -50,16 +47,6 @@ function parseDORA(page){
 		.then(value => {console.log(value); oth = value;})
 		.catch(error => {console.error('error:', error)});
 };
-
-function makePage(){
-	var newPage = window.open('', '_blank');
-	putFrame(newPage);
-	return newPage;
-}
-
-function putFrame(page){
-	page.document.write('');
-}
 
 parseDORA();
 //var newPage = makePage();
