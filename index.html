@@ -30,6 +30,7 @@
 	
 	.table-container {
       display: flex;
+	  background-color: #aaaaaa;
     }
 
     .table-container table {
@@ -45,7 +46,7 @@
     }
 	
 	.table-container .table-number {
-      font-size: 16px;
+      font-size: 20px;
       font-weight: normal;
       text-align: center;
       margin-bottom: 5px;
@@ -69,7 +70,7 @@
   </style>
 </head>
 <body>
-  <h1>GITADORA FUZZ-UP<br>DrumMania Skill by <span class="yellow-text" id="game_name">Shortcake</span></h1>
+  <h1>GITADORA FUZZ-UP<br><span id="game_which">DrumMania</span> Skill by <span class="yellow-text" id="game_name">Shortcake</span></h1>
   <p><span id="time"></span></p><br>
   <p class="total-skill" id="total_skill">Skill point : </p><br>
   
@@ -125,10 +126,10 @@
 			imgsrc_Hot += jacket_base_DHot;
 			imgsrc_Oth += jacket_base_DOth;
 		}
-		setTable();
+		setTable(data[2]);
 	}
 	
-	function setTable(){
+	function setTable(gitadora){
 		const tbodyHot = document.getElementById("skillHot");
 		const tbodyOth = document.getElementById("skillOth");
 		let valHot = 0;
@@ -147,7 +148,7 @@
 			tbodyHot.appendChild(row);
 		}
 		for (let i = 0; i < 25; i++) {
-			valOth += parseFloat(data[0][i].skill);
+			valOth += parseFloat(data[1][i].skill);
 			const row = document.createElement("tr");
 			row.innerHTML = `
 				<td>${i + 1}</td>
@@ -163,6 +164,7 @@
 		document.querySelector("#skillValueOth").innerHTML = valOth;
 		document.querySelector("#total_skill").innerHTML += (valHot + valOth);
 		document.querySelector("#game_name").innerHTML = data[3];
+		document.querySelector("#game_which").innerHTML = gitadora;
 	};
   </script>
 </body>
