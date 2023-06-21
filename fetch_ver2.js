@@ -21,7 +21,9 @@ const fetchHTML = async (url) => {
         const percent = tr.querySelector("td.achive_cell").innerText.replace(/ /g, '');
         const level = tr.querySelector("td.diff_cell").innerText.replace(/ /g, '');
         const difficulty = tr.querySelector("div[class*=diff_]").classList[1].substring(5);
-        data.push({ url_compressed, title, skill, percent, level, difficulty, });
+        const part = tr.querySelector("div[class*=part_").classList[1].substring(5);
+        const diffpart = difficulty + '-' + part[0];
+        data.push({ url_compressed, title, skill, percent, level, diffpart, });
     }
     return data;
 };
@@ -48,3 +50,5 @@ const getDataGITA = async () => {
 getDataDORA();
  - opens new window with hash(skill data) param
 */
+
+getDataDORA();
