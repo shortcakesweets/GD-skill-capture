@@ -5,7 +5,10 @@
   e-amusement 페이지에 로그인한 뒤, [GITADORA](https://p.eagate.573.jp/game/gfdm/gitadora_fuzzup/p/index.html) 페이지에 접속합니다.
 
 주소창에 다음을 복사합니다.
+
 *주의 : 맨 앞의 'javascript:' 가 사라지게 되므로 수동으로 입력해주셔야 됩니다.*
+
+모바일,컴퓨터 모두 클릭시 복사 기능이 있습니다.
 
  **기타프릭스**:
 ```
