@@ -51,8 +51,4 @@ const getData = async (game) => {
     const newPage = window.open(urlFrame + '#' + encodeURIComponent(hash));
 };
 
-/* Usage
-    getData("GITA");
-*/
-
 getData("DORA");
