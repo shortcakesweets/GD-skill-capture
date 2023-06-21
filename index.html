@@ -55,6 +55,13 @@
       padding: 8px;
       border: 1px solid black;
     }
+	
+	.cap-text {
+		max-width: 250px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
   </style>
 </head>
 <body>
@@ -126,7 +133,7 @@
 				<td><img src=${imgsrc_Hot + data[0][i].url_compressed}
 					alt=${data[0][i].title}
 					width="100px" height="100px"></td>
-				<td>${data[0][i].title}<br>${data[0][i].diffpart} ${data[0][i].level}</td>
+				<td class="cap-text">${data[0][i].title}<br>${data[0][i].diffpart} ${data[0][i].level}</td>
 				<td>${data[0][i].skill}<br>${data[0][i].percent}</td>
 			`;
 			tbodyHot.appendChild(row);
@@ -138,7 +145,7 @@
 				<td><img src=${imgsrc_Oth + data[0][i].url_compressed}
 					alt=${data[0][i].title}
 					width="100px" height="100px"></td>
-				<td>${data[1][i].title}<br>${data[1][i].diffpart} ${data[1][i].level}</td>
+				<td class="cap-text">${data[1][i].title}<br>${data[1][i].diffpart} ${data[1][i].level}</td>
 				<td>${data[1][i].skill}<br>${data[1][i].percent}</td>
 			`;
 			tbodyOth.appendChild(row);
