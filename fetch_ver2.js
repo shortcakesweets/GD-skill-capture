@@ -28,27 +28,31 @@ const fetchHTML = async (url) => {
     return data;
 };
 
-const getDataDORA = async () => {
-    const urls = [urlDhot, urlDoth];
-    const results = await Promise.all(urls.map(url => fetchHTML(url)));
-    results.push("DORA");
-    const hash = JSON.stringify(results);
-    console.log(hash);
-    const newPage = window.open(urlFrame + '#' + encodeURIComponent(hash));
-}
+const fetchName = async() => {
+    const response = await fetch("https://p.eagate.573.jp/game/gfdm/gitadora_fuzzup/p/playdata/profile.html");
+    const html = await response.text();
+    const parser = new DOMParser();
+	const doc = parser.parseFromString(html, 'text/html');
+    const name = doc.querySelector("div.profile_name_frame").innerHTML;
+    //console.log(name);
+    return name;
+};
 
-const getDataGITA = async () => {
-    const urls = [urlGhot, urlGoth];
+const getData = async (game) => {
+    const urls = [];
+    if(game == "GITA") urls.push(urlGhot, urlGoth);
+    else if(game == "DORA") urls.push(urlDhot, urlDoth);
+    else return;
     const results = await Promise.all(urls.map(url => fetchHTML(url)));
-    results.push("GITA");
+    const name = await fetchName();
+    results.push(game, name);
     const hash = JSON.stringify(results);
     console.log(hash);
     const newPage = window.open(urlFrame + '#' + encodeURIComponent(hash));
-}
+};
 
 /* Usage
-getDataDORA();
- - opens new window with hash(skill data) param
+    getData("GITA");
 */
 
-getDataDORA();
+getData("DORA");
