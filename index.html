@@ -123,9 +123,11 @@
 			const row = document.createElement("tr");
 			row.innerHTML = `
 				<td>${i + 1}</td>
-				<td><img src=${imgsrc_Hot + data[0][i].url_compressed} alt=${data[0][i].title}></td>
+				<td><img src=${imgsrc_Hot + data[0][i].url_compressed}
+					alt=${data[0][i].title}
+					width="100px" height="100px"></td>
+				<td>${data[0][i].title}<br>${data[0][i].difficulty} ${data[0][i].level}</td>
 				<td>${data[0][i].skill}<br>${data[0][i].percent}</td>
-				<td>String</td>
 			`;
 			tbodyHot.appendChild(row);
 		}
@@ -133,9 +135,11 @@
 			const row = document.createElement("tr");
 			row.innerHTML = `
 				<td>${i + 1}</td>
-				<td><img src=${imgsrc_Oth + data[0][i].url_compressed} alt=${data[0][i].title}></td>
+				<td><img src=${imgsrc_Oth + data[0][i].url_compressed}
+					alt=${data[0][i].title}
+					width="100px" height="100px"></td>
+				<td>${data[0][i].title}<br>${data[0][i].difficulty} ${data[0][i].level}</td>
 				<td>${data[0][i].skill}<br>${data[0][i].percent}</td>
-				<td>String</td>
 			`;
 			tbodyOth.appendChild(row);
 		}
