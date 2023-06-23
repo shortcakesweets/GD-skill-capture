@@ -1,6 +1,9 @@
 # GD-skill-capture
  기타도라 스킬표 캡쳐기능
 
+## 버그
+ - 창크기에 따른 캡처 범위가 변화함. 고쳐지기 전까지 모바일 버전을 권장합니다.
+
 ## 사용법
   e-amusement 페이지에 로그인한 뒤, [GITADORA](https://p.eagate.573.jp/game/gfdm/gitadora_fuzzup/p/index.html) 페이지에 접속합니다.
 
@@ -37,4 +40,4 @@ javascript:const urlGhot = 'https://p.eagate.573.jp/game/gfdm/gitadora_fuzzup/p/
 
 ## 개발현황
  - 2023.06.21 기본기능 구현 완료.
- - 2023.06.23 이미지 미포함 버전 구현중
+ - 2023.06.23 이미지 미포함 버전 캡쳐기능 구현
