@@ -23,7 +23,7 @@ function setTable(gitadora){
 		const row = document.createElement("tr");
 		row.innerHTML = `
 			<td>${i + 1}</td>
-			<td class="cap-text"><strong>${data[0][i].title}</strong><br>${data[0][i].diffpart} ${data[0][i].level}</td>
+			<td class="cap-text">${data[0][i].title}<br>${data[0][i].diffpart} ${data[0][i].level}</td>
 				<td><strong>${data[0][i].skill}</strong><br>${data[0][i].percent}</td>
 			`;
 		tbodyHot.appendChild(row);
@@ -33,7 +33,7 @@ function setTable(gitadora){
 		const row = document.createElement("tr");
 		row.innerHTML = `
 			<td>${i + 1}</td>
-			<td class="cap-text"><strong>${data[1][i].title}</strong><br>${data[1][i].diffpart} ${data[1][i].level}</td>
+			<td class="cap-text">${data[1][i].title}<br>${data[1][i].diffpart} ${data[1][i].level}</td>
 			<td><strong>${data[1][i].skill}</strong><br>${data[1][i].percent}</td>
 		`;
 		tbodyOth.appendChild(row);
