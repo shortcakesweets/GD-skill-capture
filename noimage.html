@@ -67,11 +67,19 @@
 	.total-skill{
 		font-size: 20px;
 	}
+	
+	#capture_button{
+		width: 150px;
+		height: 60px;
+		font-size: 16px;
+		padding: 5px;
+	}
   </style>
 </head>
 <body>
   <h1>GITADORA FUZZ-UP<br><span id="game_which">DrumMania</span> Skill by <span class="yellow-text" id="game_name">Shortcake</span></h1>
   <p><span id="time"></span></p><br>
+  <button id="capture_button" onclick="captureTable()">스킬표 다운로드</button><br>
   <p class="total-skill" id="total_skill">Skill point : </p><br>
   
   <div class="table-container">
@@ -95,7 +103,20 @@
       </tbody>
     </table>
   </div>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"> </script>
   <script src="https://shortcakesweets.github.io/GD-skill-capture/noimage.js"> </script>
+  <script>
+	const captureTable = async () => {
+		const button = document.getElementById("capture_button");
+		console.log("capturing...");
+		button.style.display = "none";
+		const canvas = await html2canvas(document.body);
+		const link = document.createElement('a');
+		link.href = canvas.toDataURL('image/png');
+		link.download = 'skillTable.png';
+		link.click();
+		button.style.display = "block";
+	};
+  </script>
 </body>
 </html>
